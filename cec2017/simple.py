@@ -12,10 +12,10 @@ def f1(x, rotation=None, shift=None):
     Shifted and Rotated Bent Cigar Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -31,10 +31,10 @@ def f2(x, rotation=None, shift=None):
     (Deprecated) Shifted and Rotated Sum of Different Power Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     if 'warned' not in f2.__dict__:
@@ -54,10 +54,10 @@ def f3(x, rotation=None, shift=None):
     Shifted and Rotated Zakharov Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -73,10 +73,10 @@ def f4(x, rotation=None, shift=None):
     Shifted and Rotated Rosenbrock’s Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -92,10 +92,10 @@ def f5(x, rotation=None, shift=None):
     Shifted and Rotated Rastrigin's Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -111,10 +111,10 @@ def f6(x, rotation=None, shift=None):
     Shifted and Rotated Schaffer’s F7 Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -130,10 +130,10 @@ def f7(x, rotation=None, shift=None):
     Shifted and Rotated Lunacek Bi-Rastrigin’s Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -149,10 +149,10 @@ def f8(x, rotation=None, shift=None):
     Shifted and Rotated Non-Continuous Rastrigin’s Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -168,10 +168,10 @@ def f9(x, rotation=None, shift=None):
     Shifted and Rotated Levy Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -187,10 +187,10 @@ def f10(x, rotation=None, shift=None):
     Shifted and Rotated Schwefel’s Function
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
     """
     nx = len(x)
