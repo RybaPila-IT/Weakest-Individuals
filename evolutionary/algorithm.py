@@ -54,7 +54,7 @@ class EvolutionaryAlgorithm:
             eta = random.uniform(0, 1)
             weight = random.uniform(0, 1)
             fathers = random.choices(population, k=2)
-            if eta > self.__crossover_probability:
+            if eta < self.__crossover_probability:
                 result_individuals.append(fathers[0] * weight + fathers[1] * (1 - weight))
             else:
                 result_individuals.append(fathers[0])
