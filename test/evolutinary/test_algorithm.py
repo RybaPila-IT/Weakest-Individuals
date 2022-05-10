@@ -24,7 +24,38 @@ class TestEvolutionaryAlgorithm(unittest.TestCase):
         for result in result_population:
             for r_item in result:
                 self.assertGreaterEqual(r_item, 0)
-                self.assertLessEqual(r_item, 6)
+                self.assertLessEqual(r_item, 3)
+
+    def test_succession(self):
+        elite_size = 2
+        algorithm = EvolutionaryAlgorithm(None, None, None, elite_size, None, None)
+        old_eval_population = [
+            ([0], 12),
+            ([1], 36),
+            ([2], -12),
+            ([3], -36),
+            ([4], 48),
+            ([5], 0),
+        ]
+        new_eval_population = [
+            ([6], 100),
+            ([7], 0),
+            ([8], 0),
+            ([9], 12),
+            ([10], 32),
+            ([11], 42),
+        ]
+        expected_result = [
+            ([4], 48),
+            ([1], 36),
+            ([6], 100),
+            ([11], 42),
+            ([10], 32),
+            ([9], 12),
+        ]
+        # noinspection PyUnresolvedReferences
+        result_population = algorithm._EvolutionaryAlgorithm__make_succession(old_eval_population, new_eval_population)
+        self.assertEqual(expected_result, result_population)
 
 
 if __name__ == '__main__':

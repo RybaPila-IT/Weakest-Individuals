@@ -66,8 +66,8 @@ class EvolutionaryAlgorithm:
 
     def __make_succession(self, old_eval_population, new_eval_population):
         size = len(old_eval_population)
-        old_eval_population.sort(reversed=True, key=lambda i: i[1])
-        new_eval_population.sort(reversed=True, key=lambda i: i[1])
+        old_eval_population.sort(reverse=True, key=lambda i: i[1])
+        new_eval_population.sort(reverse=True, key=lambda i: i[1])
         return old_eval_population[:self.__elite_size] + new_eval_population[:size - self.__elite_size]
 
     def __pick_best_individual(self, evaluated_population):
