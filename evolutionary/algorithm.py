@@ -62,7 +62,7 @@ class EvolutionaryAlgorithm:
         return result_individuals
 
     def __mutate_population(self, population):
-        return [i + np.random.random_sample(len(i)) * self.__mutation_strength for i in population]
+        return [i + (np.random.random_sample(len(i)) - 0.5) * self.__mutation_strength for i in population]
 
     def __make_succession(self, old_eval_population, new_eval_population):
         size = len(old_eval_population)
