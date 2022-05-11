@@ -11,13 +11,15 @@ class EvolutionaryAlgorithm:
                  crossover_probability: float = 0.3,
                  elite_size: int = 2,
                  iterations: int = 500,
-                 logger: Logger | None = None):
+                 logger: type(Logger) | None = None,
+                 verbose: bool = False):
         self.__obj_fun = objective_function
         self.__mutation_strength = mutation_strength
         self.__crossover_probability = crossover_probability
         self.__elite_size = elite_size
         self.__iterations = iterations
         self.__logger = logger
+        self.__verbose = verbose
         self.__best_individual_with_score = None
 
     def run(self, init_population: Population) -> EvaluatedIndividual:
@@ -25,7 +27,7 @@ class EvolutionaryAlgorithm:
         # Initial evaluation for algorithm start-up.
         old_eval_population = self.__evaluate_population(init_population)
 
-        for _ in range(self.__iterations):
+        for i in range(self.__iterations):
             selected_individuals = self.__tournament_selection(old_eval_population)
             crossed_individuals = self.__crossover_population(selected_individuals)
             mutated_population = self.__mutate_population(crossed_individuals)
@@ -34,6 +36,11 @@ class EvolutionaryAlgorithm:
             # Since we use elite succession we can select best individual
             # from the population after succession.
             self.__pick_best_individual(old_eval_population)
+            # Logs storing for further algorithm analysis.
+            if self.__logger is not None:
+                self.__logger.generate_new_log_entry(old_eval_population)
+            if self.__verbose:
+                print(f'Iteration {i+1} finished')
 
         return self.__best_individual_with_score
 

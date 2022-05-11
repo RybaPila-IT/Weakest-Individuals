@@ -4,10 +4,14 @@ import numpy as np
 from evolutionary.algorithm import EvolutionaryAlgorithm
 
 
+def stub_obj_func(_):
+    return 0.0
+
+
 class TestEvolutionaryAlgorithm(unittest.TestCase):
     def test_mutation(self):
         mut_strength = 2
-        algorithm = EvolutionaryAlgorithm(None, mut_strength, None, None, None, None)
+        algorithm = EvolutionaryAlgorithm(stub_obj_func, mutation_strength=mut_strength)
         population = [np.array([0, 0]), np.array([1, 1]), np.array([2, 2]), np.array([3, 3])]
         # noinspection PyUnresolvedReferences
         result_population = algorithm._EvolutionaryAlgorithm__mutate_population(population)
@@ -16,8 +20,8 @@ class TestEvolutionaryAlgorithm(unittest.TestCase):
                 self.assertAlmostEqual(o_item, r_item, delta=mut_strength//2)
 
     def test_crossover(self):
-        mut_probability = 1
-        algorithm = EvolutionaryAlgorithm(None, None, mut_probability, None, None, None)
+        crossover_probability = 1
+        algorithm = EvolutionaryAlgorithm(stub_obj_func, crossover_probability=crossover_probability)
         population = [np.array([0, 0]), np.array([1, 1]), np.array([2, 2]), np.array([3, 3])]
         # noinspection PyUnresolvedReferences
         result_population = algorithm._EvolutionaryAlgorithm__crossover_population(population)
@@ -28,7 +32,7 @@ class TestEvolutionaryAlgorithm(unittest.TestCase):
 
     def test_succession(self):
         elite_size = 2
-        algorithm = EvolutionaryAlgorithm(None, None, None, elite_size, None, None)
+        algorithm = EvolutionaryAlgorithm(stub_obj_func, elite_size=elite_size)
         old_eval_population = [
             ([0], 12),
             ([1], 36),
