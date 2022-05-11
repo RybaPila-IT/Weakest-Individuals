@@ -34,6 +34,18 @@ class TestMutationStrategy(unittest.TestCase):
         self.assertEqual(fourth[0], 4)
         self.assertEqual(fourth_val, 4)
 
+    def test_strategy_no_objective_function(self):
+        eval_population = [
+            (np.array([1]), 1),
+            (np.array([2]), 2),
+            (np.array([3]), 3),
+            (np.array([4]), 4),
+        ]
+        strategy = MutationStrategy()
+
+        with self.assertRaises(RuntimeError):
+            strategy.modify_evaluated_population(eval_population)
+
 
 if __name__ == '__main__':
     unittest.main()
