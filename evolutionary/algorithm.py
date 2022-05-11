@@ -1,15 +1,7 @@
 import random
 import numpy as np
-from nptyping import NDArray, Shape, Float
-from collections.abc import Callable
 from logger import Logger
-
-
-Individual = NDArray[Shape['1, *'], Float]
-EvaluatedIndividual = tuple[Individual, float]
-Population = list[Individual]
-EvaluatedPopulation = list[EvaluatedIndividual]
-ObjectiveFunction = Callable[[Individual], float]
+from custom_types import *
 
 
 class EvolutionaryAlgorithm:
