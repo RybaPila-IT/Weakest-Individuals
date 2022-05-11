@@ -13,6 +13,7 @@ class EvolutionaryAlgorithm:
                  iterations: int = 500,
                  logger: type(Logger) | None = None,
                  verbose: bool = False):
+        # Default values should be changed after algorithm tuning.
         self.__obj_fun = objective_function
         self.__mutation_strength = mutation_strength
         self.__crossover_probability = crossover_probability
@@ -23,6 +24,11 @@ class EvolutionaryAlgorithm:
         self.__best_individual_with_score = None
 
     def run(self, init_population: Population) -> EvaluatedIndividual:
+        """
+        Perform the EvolutionaryAlgorithm execution
+        :param init_population: initial population for the start-up
+        :return: the best achieved individual with evaluation
+        """
         self.__clean_up()
         # Initial evaluation for algorithm start-up.
         old_eval_population = self.__evaluate_population(init_population)
