@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from custom_types import EvaluatedPopulation
+from hints.aliases import EvaluatedPopulation
 
 
 class Logger:

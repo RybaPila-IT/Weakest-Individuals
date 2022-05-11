@@ -1,7 +1,7 @@
 import random
 import numpy as np
 from logger import Logger
-from custom_types import *
+from hints.aliases import *
 
 
 class EvolutionaryAlgorithm:

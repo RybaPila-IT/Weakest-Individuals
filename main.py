@@ -1,7 +1,6 @@
 from population.generator import PopulationGenerator
 from evolutionary.algorithm import EvolutionaryAlgorithm
 from logger import Logger
-
 from cec2017.functions import f9
 
 
