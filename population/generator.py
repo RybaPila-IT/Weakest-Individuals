@@ -1,5 +1,5 @@
 import numpy as np
-from custom_types import Population
+from hints.aliases import Population
 
 
 class PopulationGenerator:
