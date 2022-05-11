@@ -18,7 +18,8 @@ class TestMutationStrategy(unittest.TestCase):
         mut_strength = 2.0
         threshold = 2
         strategy = MutationStrategy(mut_strength, threshold)
-        result_eval_population = strategy.modify_evaluated_population(eval_population, stub_obj_func)
+        strategy.set_objective_function(stub_obj_func)
+        result_eval_population = strategy.modify_evaluated_population(eval_population)
         (first, first_val), (second, second_val), (third, third_val), (fourth, fourth_val) = result_eval_population
         # First 2 elements should be mutated.
         self.assertAlmostEqual(first[0], 1, delta=mut_strength/2)
