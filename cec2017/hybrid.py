@@ -13,12 +13,12 @@ def _shuffle_and_partition(x, shuffle, partitions):
     the percentages.
 
     Args:
-        x (array): Input vector.
-        shuffle (array): Shuffle vector.
+        x (numpy.array): Input vector.
+        shuffle (numpy.array): Shuffle vector.
         partitions (list): List of percentages. Assumed to add up to 1.0.
 
     Returns:
-        (list of arrays): The partitions of x after shuffling.
+        (list of numpy.arrays): The partitions of x after shuffling.
     """
     nx = len(x)
     # shuffle
@@ -40,12 +40,12 @@ def f11(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 1 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -69,12 +69,12 @@ def f12(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 2 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -98,12 +98,12 @@ def f13(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 3 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -127,12 +127,12 @@ def f14(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 4 (N=4)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -157,12 +157,12 @@ def f15(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 5 (N=4)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -187,12 +187,12 @@ def f16(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 6 (N=4)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -217,12 +217,12 @@ def f17(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 7 (N=5)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -248,12 +248,12 @@ def f18(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 8 (N=5)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -279,12 +279,12 @@ def f19(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 9 (N=5)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)
@@ -310,12 +310,12 @@ def f20(x, rotation=None, shift=None, shuffle=None):
     Hybrid Function 10 (N=6)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotation (matrix): Optional rotation matrix. If None (default), the
             official matrix from the benchmark suite will be used.
-        shift (array): Optional shift vector. If None (default), the official
+        shift (numpy.array): Optional shift vector. If None (default), the official
             vector from the benchmark suite will be used.
-        shuffle (array): Optionbal shuffle vector. If None (default), the
+        shuffle (numpy.array): Optionbal shuffle vector. If None (default), the
             official permutation vector from the benchmark suite will be used.
     """
     nx = len(x)

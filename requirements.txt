@@ -1,0 +1,2 @@
+numpy~=1.22.3
+nptyping~=2.0.1

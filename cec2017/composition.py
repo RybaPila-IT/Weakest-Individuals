@@ -24,11 +24,11 @@ def f21(x, rotations=None, shifts=None):
     Composition Function 1 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -63,11 +63,11 @@ def f22(x, rotations=None, shifts=None):
     Composition Function 2 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -102,11 +102,11 @@ def f23(x, rotations=None, shifts=None):
     Composition Function 3 (N=4)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -141,11 +141,11 @@ def f24(x, rotations=None, shifts=None):
     Composition Function 4 (N=4)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -180,11 +180,11 @@ def f25(x, rotations=None, shifts=None):
     Composition Function 5 (N=5)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -219,11 +219,11 @@ def f26(x, rotations=None, shifts=None):
     Composition Function 6 (N=5)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -260,11 +260,11 @@ def f27(x, rotations=None, shifts=None):
     Composition Function 7 (N=6)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -305,11 +305,11 @@ def f28(x, rotations=None, shifts=None):
     Composition Function 8 (N=6)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -350,13 +350,13 @@ def f29(x, rotations=None, shifts=None, shuffles=None):
     Composition Function 9 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
-        shuffles (array): Optional shuffle vectors (NxD). If None (default), the
+        shuffles (numpy.array): Optional shuffle vectors (NxD). If None (default), the
             official permutation vectors from the benchmark suite will be used.
     """
     nx = len(x)
@@ -394,13 +394,13 @@ def f30(x, rotations=None, shifts=None, shuffles=None):
     Composition Function 10 (N=3)
 
     Args:
-        x (array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
+        x (numpy.array): Input vector of dimension 2, 10, 20, 30, 50 or 100.
         rotations (matrix): Optional rotation matrices (NxDxD). If None
             (default), the official matrices from the benchmark suite will be
             used.
-        shifts (array): Optional shift vectors (NxD). If None (default), the
+        shifts (numpy.array): Optional shift vectors (NxD). If None (default), the
             official vectors from the benchmark suite will be used.
-        shuffles (array): Optional shuffle vectors (NxD). If None (default), the
+        shuffles (numpy.array): Optional shuffle vectors (NxD). If None (default), the
             official permutation vectors from the benchmark suite will be used.
     """
     nx = len(x)
