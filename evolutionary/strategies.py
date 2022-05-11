@@ -12,7 +12,7 @@ class Strategy(ABC):
 
 class MutationStrategy(Strategy):
 
-    def __int__(self, mutation_strength: float = 5, threshold: int = 20):
+    def __init__(self, mutation_strength: float = 5, threshold: int = 20):
         self.__mutation_strength = mutation_strength
         self.__threshold = threshold
 

@@ -17,7 +17,8 @@ class TestEvolutionaryAlgorithm(unittest.TestCase):
         result_population = algorithm._EvolutionaryAlgorithm__mutate_population(population)
         for original, result in zip(population, result_population):
             for o_item, r_item in zip(original, result):
-                self.assertAlmostEqual(o_item, r_item, delta=mut_strength//2)
+                self.assertAlmostEqual(o_item, r_item, delta=mut_strength/2)
+                self.assertNotEqual(o_item, r_item)
 
     def test_crossover(self):
         crossover_probability = 1
