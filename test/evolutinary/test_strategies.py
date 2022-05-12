@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from evolutionary.strategies import MutationStrategy, AverageMirroringStrategy
+from evolutionary.strategies import MutationStrategy, AverageMirroringStrategy, ParticleSwarmStrategy
 
 
 class TestMutationStrategy(unittest.TestCase):
@@ -92,6 +92,50 @@ class TestAverageMirroringStrategy(unittest.TestCase):
             (np.array([4]), 4),
         ]
         strategy = AverageMirroringStrategy(threshold=2)
+
+        with self.assertRaises(RuntimeError):
+            strategy.modify_evaluated_population(eval_population)
+
+
+class TestParticleSwarmStrategy(unittest.TestCase):
+
+    def test_strategy(self):
+        def stub_obj_func(_):
+            return 42
+
+        eval_population = [
+            (np.array([0, 0]), 1),
+            (np.array([1, 0]), 2),
+            (np.array([0, 1]), 3)
+        ]
+        strategy = ParticleSwarmStrategy(best_strength=0.5, other_strength=0.5, threshold=2)
+        strategy.set_objective_function(stub_obj_func)
+        result_eval_population = strategy.modify_evaluated_population(eval_population)
+        (first, first_val), (second, second_val), (third, third_val) = result_eval_population
+        # First point should be moved towards point (0,1) and possibly towards point (1, 0)
+        self.assertLess(first[0], 1)
+        self.assertGreaterEqual(first[0], 0)
+        self.assertGreater(first[1], 0)
+        self.assertLess(first[1], 1)
+        self.assertEqual(first_val, 42)
+        # Second point should be moved towards point (0, 1) and possibly towards point (0, 0)
+        self.assertLessEqual(second[0], 1)
+        self.assertGreater(second[0], 0)
+        self.assertGreater(second[1], 0)
+        self.assertLess(second[1], 1)
+        self.assertEqual(second_val, 42)
+        # Point (0, 1) should be unchanged
+        self.assertTrue((third == np.array([0, 1])).all())
+        self.assertEqual(third_val, 3)
+
+    def test_strategy_no_objective_function(self):
+        eval_population = [
+            (np.array([1]), 1),
+            (np.array([2]), 2),
+            (np.array([3]), 3),
+            (np.array([4]), 4),
+        ]
+        strategy = ParticleSwarmStrategy(threshold=2)
 
         with self.assertRaises(RuntimeError):
             strategy.modify_evaluated_population(eval_population)

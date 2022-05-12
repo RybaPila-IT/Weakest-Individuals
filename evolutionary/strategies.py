@@ -114,4 +114,51 @@ class AverageMirroringStrategy(Strategy):
 
     def __ensure_objective_function(self):
         if self.__obj_func is None:
-            raise RuntimeError('objective function is not set for MirroringStrategy')
+            raise RuntimeError('objective function is not set for AverageMirroringStrategy')
+
+
+class ParticleSwarmStrategy(Strategy):
+
+    def __init__(self, best_strength: float = 1.0, other_strength: float = 3.0, threshold: int = 20):
+        self.__best_strength = best_strength
+        self.__other_strength = other_strength
+        self.__threshold = threshold
+        self.__obj_func = None
+
+    def modify_evaluated_population(self, eval_population: EvaluatedPopulation) -> EvaluatedPopulation:
+        self.__ensure_objective_function()
+        # Continue if the objective function is set.
+        weakest_individuals, best_individual = self.__select_weakest_and_best_individuals(eval_population)
+        altered_individuals = self.__alter_weakest_individuals(weakest_individuals, best_individual)
+        # Returning population with modified versions of the weakest individuals.
+        return self.__evaluate_population(altered_individuals) + eval_population[self.__threshold:]
+
+    def __select_weakest_and_best_individuals(self,
+                                              eval_population: EvaluatedPopulation) -> tuple[Population, Individual]:
+        self.__sort_population(eval_population)
+        # Selecting the threshold amount of the weakest individuals.
+        return [i[0] for i in eval_population[:self.__threshold]], eval_population[-1][0]
+
+    def __alter_weakest_individuals(self, weakest_individuals: Population, best: Individual) -> Population:
+        return [
+            self.__alter_individual(i, random.choices(weakest_individuals, k=1)[0], best) for i in weakest_individuals
+        ]
+
+    def __alter_individual(self, individual: Individual, other: Individual, best: Individual) -> Individual:
+        to_best_vec = (best - individual) * self.__best_strength * random.uniform(0, 1)
+        to_other_vec = (other - individual) * self.__other_strength * random.uniform(0, 1)
+        return individual + to_best_vec + to_other_vec
+
+    def set_objective_function(self, obj_func: ObjectiveFunction) -> None:
+        self.__obj_func = obj_func
+
+    def __evaluate_population(self, population: Population) -> EvaluatedPopulation:
+        return [(i, self.__obj_func(i)) for i in population]
+
+    @staticmethod
+    def __sort_population(eval_population: EvaluatedPopulation) -> None:
+        eval_population.sort(key=lambda i: i[1])
+
+    def __ensure_objective_function(self):
+        if self.__obj_func is None:
+            raise RuntimeError('objective function is not set for ParticleSwarmStrategy')
