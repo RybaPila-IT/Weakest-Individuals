@@ -1,12 +1,14 @@
 import random
 import numpy as np
 from logger import Logger
+from evolutionary.strategies import Strategy
 from hints.aliases import *
 
 
 class EvolutionaryAlgorithm:
     def __init__(self,
                  objective_function: ObjectiveFunction,
+                 strategy: type(Strategy) | None = None,
                  mutation_strength: float = 2.0,
                  crossover_probability: float = 0.3,
                  elite_size: int = 2,
@@ -15,6 +17,7 @@ class EvolutionaryAlgorithm:
                  verbose: bool = False):
         # Default values should be changed after algorithm tuning.
         self.__obj_fun = objective_function
+        self.__strategy = strategy
         self.__mutation_strength = mutation_strength
         self.__crossover_probability = crossover_probability
         self.__elite_size = elite_size
@@ -30,28 +33,43 @@ class EvolutionaryAlgorithm:
         :return: the best achieved individual with evaluation
         """
         self.__clean_up()
+        self.__prepare_strategy()
         # Initial evaluation for algorithm start-up.
         old_eval_population = self.__evaluate_population(init_population)
 
         for i in range(self.__iterations):
-            selected_individuals = self.__tournament_selection(old_eval_population)
-            crossed_individuals = self.__crossover_population(selected_individuals)
-            mutated_population = self.__mutate_population(crossed_individuals)
-            new_eval_population = self.__evaluate_population(mutated_population)
-            old_eval_population = self.__make_succession(old_eval_population, new_eval_population)
-            # Since we use elite succession we can select best individual
-            # from the population after succession.
-            self.__pick_best_individual(old_eval_population)
+            # Strategy is applied as the first step of the algorithm.
+            if self.__strategy is not None:
+                old_eval_population = self.__strategy.modify_evaluated_population(old_eval_population)
+            # Regular genetic algorithm steps follow.
+            new_eval_population = self.__generate_new_evaluated_population(old_eval_population)
+            # Since we use elite succession we can select best individual this way.
+            self.__pick_best_individual(new_eval_population)
             # Logs storing for further algorithm analysis.
             if self.__logger is not None:
-                self.__logger.generate_new_log_entry(old_eval_population)
+                self.__logger.generate_new_log_entry(new_eval_population)
             if self.__verbose:
                 print(f'Iteration {i+1} finished')
+            # New population becomes the old one for next iteration.
+            old_eval_population = new_eval_population
 
         return self.__best_individual_with_score
 
     def __clean_up(self) -> None:
         self.__best_individual_with_score = None
+        self.__logger.clean_up()
+
+    def __prepare_strategy(self):
+        if self.__strategy is not None:
+            self.__strategy.set_objective_function(self.__obj_fun)
+
+    def __generate_new_evaluated_population(self, old_eval_population: EvaluatedPopulation) -> EvaluatedPopulation:
+        # Basically genetic algorithm steps.
+        selected_individuals = self.__tournament_selection(old_eval_population)
+        crossed_individuals = self.__crossover_population(selected_individuals)
+        mutated_population = self.__mutate_population(crossed_individuals)
+        new_eval_population = self.__evaluate_population(mutated_population)
+        return self.__make_succession(old_eval_population, new_eval_population)
 
     def __evaluate_population(self, population: Population) -> EvaluatedPopulation:
         return [(i, self.__obj_fun(i)) for i in population]
