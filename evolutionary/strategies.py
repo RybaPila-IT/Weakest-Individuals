@@ -140,7 +140,9 @@ class ParticleSwarmStrategy(Strategy):
         return [i[0] for i in eval_population[:self.__threshold]], eval_population[-1][0]
 
     def __alter_weakest_individuals(self, weakest_individuals: Population, best: Individual) -> Population:
-        return [self.__alter_individual(i, random.choices(weakest_individuals, k=1)[0], best) for i in Population]
+        return [
+            self.__alter_individual(i, random.choices(weakest_individuals, k=1)[0], best) for i in weakest_individuals
+        ]
 
     def __alter_individual(self, individual: Individual, other: Individual, best: Individual) -> Individual:
         to_best_vec = (best - individual) * self.__best_strength * random.uniform(0, 1)
