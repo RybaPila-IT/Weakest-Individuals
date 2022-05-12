@@ -10,14 +10,15 @@ def stub_obj_func(_):
 
 class TestEvolutionaryAlgorithm(unittest.TestCase):
     def test_mutation(self):
-        mut_strength = 2
+        mut_strength = 1.0
         algorithm = EvolutionaryAlgorithm(stub_obj_func, mutation_strength=mut_strength)
         population = [np.array([0, 0]), np.array([1, 1]), np.array([2, 2]), np.array([3, 3])]
         # noinspection PyUnresolvedReferences
         result_population = algorithm._EvolutionaryAlgorithm__mutate_population(population)
         for original, result in zip(population, result_population):
             for o_item, r_item in zip(original, result):
-                self.assertAlmostEqual(o_item, r_item, delta=mut_strength/2)
+                # Almost 100% chances that values are in this range.
+                self.assertAlmostEqual(o_item, r_item, delta=4)
                 self.assertNotEqual(o_item, r_item)
 
     def test_crossover(self):

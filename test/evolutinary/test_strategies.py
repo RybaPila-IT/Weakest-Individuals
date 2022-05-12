@@ -13,17 +13,18 @@ class TestMutationStrategy(unittest.TestCase):
             (np.array([3]), 3),
             (np.array([4]), 4),
         ]
-        mut_strength = 2.0
+        mut_strength = 1.0
         threshold = 2
         strategy = MutationStrategy(mut_strength, threshold)
         strategy.set_objective_function(stub_obj_func)
         result_eval_population = strategy.modify_evaluated_population(eval_population)
         (first, first_val), (second, second_val), (third, third_val), (fourth, fourth_val) = result_eval_population
         # First 2 elements should be mutated.
-        self.assertAlmostEqual(first[0], 1, delta=mut_strength/2)
+        # It values should be within range 1 +- [-4, 4] with almost 100% chances.
+        self.assertAlmostEqual(first[0], 1, delta=4)
         self.assertNotEqual(first[0], 1)
         self.assertEqual(first_val, 42)
-        self.assertAlmostEqual(second[0], 2, delta=mut_strength/2)
+        self.assertAlmostEqual(second[0], 2, delta=4)
         self.assertNotEqual(second[0], 2)
         self.assertEqual(second_val, 42)
         # Last 2 elements should not be changed.

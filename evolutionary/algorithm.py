@@ -100,7 +100,7 @@ class EvolutionaryAlgorithm:
         return result_individuals
 
     def __mutate_population(self, population: Population) -> Population:
-        return [i + (np.random.random_sample(len(i)) - 0.5) * self.__mutation_strength for i in population]
+        return [i + (np.random.standard_normal(len(i))) * self.__mutation_strength for i in population]
 
     def __make_succession(self,
                           old_eval_population: EvaluatedPopulation,

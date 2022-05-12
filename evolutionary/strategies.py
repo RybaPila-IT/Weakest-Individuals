@@ -34,7 +34,7 @@ class MutationStrategy(Strategy):
         self.__obj_func = obj_func
 
     def __mutate(self, weakest_individuals: Population) -> Population:
-        return [i + (np.random.random_sample(len(i)) - 0.5) * self.__mutation_strength for i in weakest_individuals]
+        return [i + (np.random.standard_normal(len(i))) * self.__mutation_strength for i in weakest_individuals]
 
     def __select_weakest_individuals(self, eval_population: EvaluatedPopulation) -> Population:
         self.__sort_population(eval_population)
