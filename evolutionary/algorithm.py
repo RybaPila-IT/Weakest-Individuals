@@ -6,6 +6,14 @@ from hints.aliases import *
 
 
 class EvolutionaryAlgorithm:
+    """
+    Class implementing used evolutionary algorithm for experiments.
+
+    This particular class implements genetic algorithm. For more
+    information visit this Wikipedia page [1].
+
+    [1]: https://en.wikipedia.org/wiki/Genetic_algorithm
+    """
     def __init__(self,
                  objective_function: ObjectiveFunction,
                  strategy: type(Strategy) | None = None,
@@ -28,7 +36,8 @@ class EvolutionaryAlgorithm:
 
     def run(self, init_population: Population) -> EvaluatedIndividual:
         """
-        Perform the EvolutionaryAlgorithm execution
+        Perform the EvolutionaryAlgorithm execution.
+
         :param init_population: initial population for the start-up
         :return: the best achieved individual with evaluation
         """

@@ -8,10 +8,24 @@ from hints.aliases import *
 class Strategy(ABC):
     @abstractmethod
     def modify_evaluated_population(self, eval_population: EvaluatedPopulation) -> EvaluatedPopulation:
+        """
+        Modify evaluated population by this strategy.
+
+        Modification depends on specific implementation of abstract Strategy class.
+        Modification options are specified by the constructor parameters.
+
+        :param eval_population: evaluated population which will be modified
+        :return: new evaluated population
+        """
         pass
 
     @abstractmethod
     def set_objective_function(self, obj_func: ObjectiveFunction) -> None:
+        """
+        Sets objective function which will be used by strategy.
+
+        :param obj_func: objective function to use
+        """
         pass
 
 
@@ -117,7 +131,7 @@ class AverageMirroringStrategy(Strategy):
             raise RuntimeError('objective function is not set for AverageMirroringStrategy')
 
 
-class ParticleSwarmStrategy(Strategy):
+class DifferentialEvolutionStrategy(Strategy):
 
     def __init__(self, best_strength: float = 1.0, other_strength: float = 3.0, threshold: int = 20):
         self.__best_strength = best_strength
