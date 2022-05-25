@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from evolutionary.strategies import MutationStrategy, AverageMirroringStrategy, ParticleSwarmStrategy
+from evolutionary.strategies import MutationStrategy, AverageMirroringStrategy, DifferentialEvolutionStrategy
 
 
 class TestMutationStrategy(unittest.TestCase):
@@ -98,7 +98,7 @@ class TestAverageMirroringStrategy(unittest.TestCase):
             strategy.modify_evaluated_population(eval_population)
 
 
-class TestParticleSwarmStrategy(unittest.TestCase):
+class TestDifferentialEvolutionStrategy(unittest.TestCase):
 
     def test_strategy(self):
         def stub_obj_func(_):
@@ -109,7 +109,7 @@ class TestParticleSwarmStrategy(unittest.TestCase):
             (np.array([1, 0]), 2),
             (np.array([0, 1]), 3)
         ]
-        strategy = ParticleSwarmStrategy(best_strength=0.5, other_strength=0.5, threshold=2)
+        strategy = DifferentialEvolutionStrategy(best_strength=0.5, other_strength=0.5, threshold=2)
         strategy.set_objective_function(stub_obj_func)
         result_eval_population = strategy.modify_evaluated_population(eval_population)
         (first, first_val), (second, second_val), (third, third_val) = result_eval_population
@@ -136,7 +136,7 @@ class TestParticleSwarmStrategy(unittest.TestCase):
             (np.array([3]), 3),
             (np.array([4]), 4),
         ]
-        strategy = ParticleSwarmStrategy(threshold=2)
+        strategy = DifferentialEvolutionStrategy(threshold=2)
 
         with self.assertRaises(RuntimeError):
             strategy.modify_evaluated_population(eval_population)
