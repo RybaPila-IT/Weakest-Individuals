@@ -10,7 +10,7 @@ if __name__ == '__main__':
     logger = Logger()
     strategy = MutationStrategy()
     algorithm = EvolutionaryAlgorithm(objective_function=negate(f4), strategy=strategy, logger=logger, verbose=True)
-    init_population = PopulationGenerator.generate_population(0, 10, 2, 100)
+    init_population = PopulationGenerator.generate_population_uniform_distribution(0, 10, 2, 100)
     _ = algorithm.run(init_population)
 
     logger.show_log_plots()
