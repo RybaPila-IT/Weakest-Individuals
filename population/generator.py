@@ -22,7 +22,7 @@ class PopulationGenerator:
 
     @staticmethod
     def generate_population_uniform_distribution(low: float | list[float],
-                                                 high: float| list[float],
+                                                 high: float | list[float],
                                                  individual_size: int,
                                                  population_size: int) -> Population:
         """
