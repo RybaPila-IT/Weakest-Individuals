@@ -34,7 +34,8 @@ class TestEvolutionaryAlgorithm(unittest.TestCase):
 
     def test_succession(self):
         elite_size = 2
-        algorithm = EvolutionaryAlgorithm(stub_obj_func, elite_size=elite_size)
+        population_size = 6
+        algorithm = EvolutionaryAlgorithm(stub_obj_func, elite_size=elite_size, population_size=population_size)
         old_eval_population = [
             ([0], 12),
             ([1], 36),
