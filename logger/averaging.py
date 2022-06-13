@@ -57,6 +57,9 @@ class AveragingLogger:
         )
 
     def get_logging_logger(self) -> type(Logger):
+        """
+        Returns the RegularLogger which is not collecting the information.
+        """
         if len(self.__loggers) == 0:
             raise RuntimeError('no logger')
         return self.__loggers[-1]
@@ -86,26 +89,19 @@ class AveragingLogger:
         if i > -1:
             self.__loggers[i].show_log_plots()
             return
+        # Show averaged plots.
+        loggers_data = [logger.get_logger_data() for logger in self.__loggers]
         # Start to present the averaging version of the plots
         plt.figure(figsize=(14, 7), layout='constrained')
 
         if self.__options['v_max']:
-            avg_max = np.mean(
-                a=[logger.get_max_run_values() for logger in self.__loggers],
-                axis=0
-            )
+            avg_max = np.mean(a=[data['v_max'] for data in loggers_data], axis=0)
             plt.plot([i for i in range(1, len(avg_max) + 1)], avg_max, label='max')
         if self.__options['v_min']:
-            avg_min = np.mean(
-                a=[logger.get_min_run_values() for logger in self.__loggers],
-                axis=0
-            )
+            avg_min = np.mean(a=[data['v_min'] for data in loggers_data], axis=0)
             plt.plot([i for i in range(1, len(avg_min) + 1)], avg_min, label='min')
         if self.__options['v_avg']:
-            avg_avg = np.mean(
-                a=[logger.get_avg_run_values() for logger in self.__loggers],
-                axis=0
-            )
+            avg_avg = np.mean(a=[data['v_avg'] for data in loggers_data], axis=0)
             plt.plot([i for i in range(1, len(avg_avg) + 1)], avg_avg, label='avg')
 
         plt.xlabel('Iteration')
@@ -126,24 +122,44 @@ class AveragingLogger:
         if i > -1:
             self.__loggers[i].store_log(file_path)
             return
-        # Perform the averaging sotoring of logs.
+        # Store averaged logs.
         with open(file_path, 'w') as file:
+            loggers_data = [logger.get_logger_data() for logger in self.__loggers]
+            # Store data accordingly to options.
             if self.__options['v_max']:
-                avg_max = np.mean(
-                    a=[logger.get_max_run_values() for logger in self.__loggers],
-                    axis=0
-                )
+                avg_max = np.mean(a=[data['v_max'] for data in loggers_data], axis=0)
                 file.write(f'avg_v_max: {avg_max}\n')
             if self.__options['v_min']:
-                avg_min = np.mean(
-                    a=[logger.get_min_run_values() for logger in self.__loggers],
-                    axis=0
-                )
+                avg_min = np.mean(a=[data['v_min'] for data in loggers_data], axis=0)
                 file.write(f'avg_v_min: {avg_min}\n')
             if self.__options['v_avg']:
-                avg_avg = np.mean(
-                    a=[logger.get_avg_run_values() for logger in self.__loggers],
-                    axis=0
-                )
+                avg_avg = np.mean(a=[data['v_avg'] for data in loggers_data], axis=0)
                 file.write(f'avg_v_avg: {avg_avg}\n')
 
+    def get_logger_data(self, i: int = -1) -> dict:
+        """
+        Get data stored by the logger
+
+        Data can be fetched from a single run or be averaged across all runs.
+
+        :param i: index of the epoch from which the data will be collected, -1 for averaging
+
+        :return: dictionary containing data from single run or averaged data. Keys will
+                differ between single run data and averaged data.
+        """
+        if i < -1 or i >= len(self.__loggers):
+            raise RuntimeError(f'invalid i value {i}')
+        if i > -1:
+            return self.__loggers[i].get_logger_data()
+        # Return the averaged data.
+        data = {}
+        loggers_data = [logger.get_logger_data() for logger in self.__loggers]
+        # Get data accordingly to options.
+        if self.__options['v_max']:
+            data['avg_v_max'] = np.mean(a=[data['v_max'] for data in loggers_data], axis=0)
+        if self.__options['v_min']:
+            data['avg_v_min'] = np.mean(a=[data['v_min'] for data in loggers_data], axis=0)
+        if self.__options['v_avg']:
+            data['avg_v_avg'] = np.mean(a=[data['v_avg'] for data in loggers_data], axis=0)
+
+        return data
