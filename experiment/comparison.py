@@ -78,12 +78,13 @@ class ExperimentComparison:
             plot_title = self.plot_names[data_plot]
             # Show the plot eventually.
             self.__show_plot(results_to_show, plot_title)
+            self.__last_result_info(results_to_show, plot_title)
 
     @staticmethod
-    def __show_plot(results, plot_title):
+    def __show_plot(results_to_show: list[tuple[str, list[float]]], plot_title: str) -> None:
         plt.figure(figsize=(14, 7), layout='constrained')
         # Actual plotting part.
-        for algo_name, result in results:
+        for algo_name, result in results_to_show:
             plt.plot([i+1 for i in range(len(result))], result, label=algo_name)
         # Setting the labels for better visual context.
         plt.xlabel('Iteration')
@@ -92,3 +93,9 @@ class ExperimentComparison:
         plt.legend()
         plt.show()
 
+    @staticmethod
+    def __last_result_info(results_to_show: list[tuple[str, list[float]]], plot_title: str) -> None:
+        print('\n')
+        for algo_name, result in results_to_show:
+            print(f'{plot_title}: {algo_name}: last result: {result[-1]}')
+        print('\n')
