@@ -5,10 +5,10 @@ from hints.aliases import EvaluatedPopulation
 
 class Logger:
     """
-    Class storing information about EvolutionaryAlgorithm run.
+    Class storing information about single EvolutionaryAlgorithm run.
 
     This class enables a convenient way to store and manage log data
-    generated as the result of EvolutionaryAlgorithm run.
+    generated as the result of a single EvolutionaryAlgorithm run.
 
     It is possible to show data in graphical form as plots or
     dump it directly into file for further analysis.
@@ -79,7 +79,7 @@ class Logger:
 
         plt.xlabel('Iteration')
         plt.ylabel('Objective function value')
-        plt.title('Algorithm results')
+        plt.title('Algorithm results of the single run')
         plt.legend()
         plt.show()
 
@@ -96,3 +96,21 @@ class Logger:
                 file.write(f'v_min: {self.__min}\n')
             if self.__options['v_avg']:
                 file.write(f'v_avg: {self.__avg}\n')
+
+    def get_max_run_values(self) -> list[float]:
+        """
+        Returns max values stored during run.
+        """
+        return self.__max
+
+    def get_min_run_values(self) -> list[float]:
+        """
+        Returns min values stored during run.
+        """
+        return self.__min
+
+    def get_avg_run_values(self) -> list[float]:
+        """
+        Returns avg values stored during run.
+        """
+        return self.__avg
