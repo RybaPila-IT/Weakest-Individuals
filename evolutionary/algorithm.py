@@ -16,7 +16,7 @@ class EvolutionaryAlgorithm:
     """
 
     def __init__(self,
-                 objective_function: ObjectiveFunction,
+                 objective_function: ObjectiveFunction | None = None,
                  strategy: type(Strategy) | None = None,
                  mutation_strength: float = 2.0,
                  crossover_probability: float = 0.3,
@@ -49,6 +49,12 @@ class EvolutionaryAlgorithm:
         """
         self.__logger = logger
 
+    def set_objective_function(self, objective_function: ObjectiveFunction) -> None:
+        """
+        Sets the new objective function for the algorithm.
+        """
+        self.__obj_fun = objective_function
+
     def run(self, init_population: Population) -> EvaluatedIndividual:
         """
         Perform the EvolutionaryAlgorithm execution.
@@ -60,6 +66,7 @@ class EvolutionaryAlgorithm:
         :return: the best achieved individual with evaluation
         """
         self.__clean_up()
+        self.__ensure_objective_function()
         self.__prepare_strategy()
         self.__ensure_legit_size(init_population)
         # Initial evaluation for algorithm start-up.
@@ -90,6 +97,10 @@ class EvolutionaryAlgorithm:
     def __clean_up(self) -> None:
         self.__best_individual_with_score = None
         self.__logger.clean_up()
+
+    def __ensure_objective_function(self) -> None:
+        if self.__obj_fun is None:
+            raise RuntimeError('objective function is None')
 
     def __prepare_strategy(self):
         if self.__strategy is not None:

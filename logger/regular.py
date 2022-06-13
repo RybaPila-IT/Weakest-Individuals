@@ -97,20 +97,16 @@ class Logger:
             if self.__options['v_avg']:
                 file.write(f'v_avg: {self.__avg}\n')
 
-    def get_max_run_values(self) -> list[float]:
+    def get_logger_data(self) -> dict:
         """
-        Returns max values stored during run.
+        Returns data stored in logger with respect to options.
         """
-        return self.__max
+        data = {}
+        if self.__options['v_max']:
+            data['v_max'] = self.__max
+        if self.__options['v_min']:
+            data['v_min'] = self.__min
+        if self.__options['v_avg']:
+            data['v_avg'] = self.__avg
 
-    def get_min_run_values(self) -> list[float]:
-        """
-        Returns min values stored during run.
-        """
-        return self.__min
-
-    def get_avg_run_values(self) -> list[float]:
-        """
-        Returns avg values stored during run.
-        """
-        return self.__avg
+        return data
