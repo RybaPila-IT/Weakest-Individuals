@@ -81,7 +81,7 @@ class AveragingLogger:
 
         :param i: index of the run which plots will be show. When passed -1 the averaging option will be used.
         """
-        if i < -1:
+        if i < -1 or i >= len(self.__loggers):
             raise RuntimeError(f'invalid i value: {i}')
         if i > -1:
             self.__loggers[i].show_log_plots()
@@ -113,4 +113,37 @@ class AveragingLogger:
         plt.title(f'Average algorithm results of {len(self.__loggers)} runs')
         plt.legend()
         plt.show()
+
+    def store_log(self, file_path: str, i: int = -1) -> None:
+        """
+        Stores generated logs into file.
+
+        :param file_path: path to the file where logs will be stored.
+        :param i: index of the logger which data will be stored, if -1 the averaging will be performed.
+        """
+        if i < -1 or i >= len(self.__loggers):
+            raise RuntimeError(f'invalid i value {i}')
+        if i > -1:
+            self.__loggers[i].store_log(file_path)
+            return
+        # Perform the averaging sotoring of logs.
+        with open(file_path, 'w') as file:
+            if self.__options['v_max']:
+                avg_max = np.mean(
+                    a=[logger.get_max_run_values() for logger in self.__loggers],
+                    axis=0
+                )
+                file.write(f'avg_v_max: {avg_max}\n')
+            if self.__options['v_min']:
+                avg_min = np.mean(
+                    a=[logger.get_min_run_values() for logger in self.__loggers],
+                    axis=0
+                )
+                file.write(f'avg_v_min: {avg_min}\n')
+            if self.__options['v_avg']:
+                avg_avg = np.mean(
+                    a=[logger.get_avg_run_values() for logger in self.__loggers],
+                    axis=0
+                )
+                file.write(f'avg_v_avg: {avg_avg}\n')
 
