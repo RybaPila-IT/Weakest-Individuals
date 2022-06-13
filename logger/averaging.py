@@ -56,6 +56,11 @@ class AveragingLogger:
             Logger(self.__options)
         )
 
+    def get_logging_logger(self) -> type(Logger):
+        if len(self.__loggers) == 0:
+            raise RuntimeError('no logger')
+        return self.__loggers[-1]
+
     def generate_new_log_entry(self, eval_population: EvaluatedPopulation) -> None:
         """
         Generates new entry for each of collecting logging information.

@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from logger import Logger
+from logger.regular import Logger
 from evolutionary.strategies import Strategy
 from hints.aliases import *
 
@@ -36,6 +36,18 @@ class EvolutionaryAlgorithm:
         self.__logger = logger
         self.__verbose = verbose
         self.__best_individual_with_score = None
+
+    def set_strategy(self, strategy: type(Strategy) | None) -> None:
+        """
+        Sets the new strategy for the algorithm
+        """
+        self.__strategy = strategy
+
+    def set_logger(self, logger: type(Logger) | None) -> None:
+        """
+        Sets the new logger for the algorithm.
+        """
+        self.__logger = logger
 
     def run(self, init_population: Population) -> EvaluatedIndividual:
         """
