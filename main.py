@@ -1,7 +1,7 @@
 from population.generator import PopulationGenerator
 from evolutionary.algorithm import EvolutionaryAlgorithm
 from evolutionary.strategies import MutationStrategy
-from logger import Logger
+from logger.regular import Logger
 from cec2017.functions import f4
 from cec2017.negate import negate
 
