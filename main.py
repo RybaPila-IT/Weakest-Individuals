@@ -2,7 +2,7 @@ from population.generator import PopulationGenerator
 from evolutionary.algorithm import EvolutionaryAlgorithm
 from evolutionary.strategies import *
 from experiment.comparison import ExperimentComparison
-from cec2017.functions import f9
+from cec2017.functions import f10
 from cec2017.negate import negate
 
 
@@ -34,8 +34,8 @@ if __name__ == '__main__':
         'Mirroring',
         'Differential'
     ]
-    obj_func = negate(f9)
-    duration = 2
+    obj_func = negate(f10)
+    duration = 10
 
     experiment_comparison = ExperimentComparison(
         algorithms,

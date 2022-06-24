@@ -68,3 +68,32 @@ the random displacement strength is generated accordingly to uniform distributio
 [0, 1).
 
 
+### Experiments
+
+In order to test the following strategies we have proposed a way of executing and specifying
+the so-called "Experiments". **Experiment** is multiple-times algorithm  execution 
+along with its data gathering. Experiment averages all values gathered from all 
+single times executions for further analysis. <br>
+Conducting the Experiments is necessary in order to compare 
+strategies. Single algorithm executions are biased with huge variance due to non-deterministic
+nature of evolutionary algorithms.
+
+### Comparison
+
+We have developed a tool enabling to easily compare Experiments 
+results in a graphical form. It plots data gathered by the 
+Experiments and prints out the final values of obtained by algorithms (max, min and avg).
+
+
+<figure>
+<img src="./doc/f10_sample_plot.png" alt="Plot" style="width:100%">
+<figcaption align="center">Fig. 1 - Max plot of F10 function evaluated by strategies</figcaption>
+</figure>
+
+
+### Results
+
+Extensive results of strategies comparison with description can be found [here](./doc/R_Radziukiewicz_M_Badach_POP_Dokumentacja.pdf).
+Documentation is available in Polish only.
+
+
