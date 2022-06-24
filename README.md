@@ -84,11 +84,10 @@ We have developed a tool enabling to easily compare Experiments
 results in a graphical form. It plots data gathered by the 
 Experiments and prints out the final values of obtained by algorithms (max, min and avg).
 
-
-<figure>
+<p align="center">
 <img src="./doc/f10_sample_plot.png" alt="Plot" style="width:100%">
-<figcaption align="center">Fig. 1 - Max plot of F10 function evaluated by strategies</figcaption>
-</figure>
+<h3 align="center">Fig. 1 - Sample results of F10 function experiment comparison</h3>
+</p>
 
 
 ### Results
